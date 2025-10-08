@@ -9,7 +9,7 @@ function Input({...props}) {
             className="question-field"
             value={text} 
             onChange={(e) => setText(e.target.value)} 
-            placeholder="Type something..." 
+            placeholder={props.placeholder} 
             {...props}
         />
     );

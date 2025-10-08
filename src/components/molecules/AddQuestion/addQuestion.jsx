@@ -4,21 +4,22 @@ import Button from "../../atoms/Button/button";
 
 function AddQuestion({...props}) {
   const [question, setQuestion] = useState("");
+  const [answer, setAnswer] = useState("");
 
   const handleAddQuestion = () => {
-    if (question.trim()) {
-      console.log("New Question Added: ", question);
-      console.log("Props: ", props);
+    if (question.trim() && answer.trim()) {
       if (typeof props.onAdd === "function") {
-        props.onAdd(question);
+        props.onAdd({question: question, answer: answer});
       }
       setQuestion("");
+      setAnswer("");
     }
   };
 
   return (
     <>
-      <Input value={question} onChange={(e) => setQuestion(e.target.value)} />
+      <Input value={question} onChange={(e) => setQuestion(e.target.value)} placeholder="Enter question" />
+      <Input value={answer} onChange={(e) => setAnswer(e.target.value)} placeholder="Enter answer" />
       <Button onClick={handleAddQuestion} text={"Add Question"} />
     </>
   );

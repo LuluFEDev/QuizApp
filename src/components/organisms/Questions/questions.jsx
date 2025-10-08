@@ -3,14 +3,14 @@ import Question from "../../molecules/Question/question";
 import AddQuestion from "../../molecules/AddQuestion/addQuestion";
 
 const Questions = () => {
-  const [questions, setQuestions] = useState([]);
+  const [questions, setQuestions] = useState([{question: "", answer: ""}]);
 
   return (
     <div>
-      <AddQuestion onAdd={(question) => setQuestions([...questions, question])} />
       {questions.map((question, index) => (
-        <Question key={index} text={question} />
+        <Question key={index} text={question.question} answer={question.answer} />
       ))}
+      <AddQuestion onAdd={(question) => setQuestions([...questions, question])} />
     </div>
   );
 };
