@@ -1,35 +1,24 @@
 import { useState } from "react";
-import Button  from "./components/atoms/Button/button";
+import Button from "./components/atoms/Button/button";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
+import smileyFace from "./assets/smiley.jpg";
 import "./App.css";
 import AddQuestion from "./components/molecules/AddQuestion/addQuestion";
+import Questions from "./components/organisms/Questions/questions";
+import { Routes, Route } from 'react-router-dom';
+import Home from "./components/pages/Home/home";
+import Admin from "./components/pages/Admin/admin";
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Quiz app</h1>
-      <div className="card">
-        <Button />
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-
-        <AddQuestion />
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+        <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/admin" element={<Admin />} />
+         </Routes>
     </>
   );
 }

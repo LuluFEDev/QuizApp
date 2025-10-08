@@ -2,13 +2,16 @@ import { useState } from "react";
 import Input from "../../atoms/Input/input";
 import Button from "../../atoms/Button/button";
 
-function AddQuestion() {
+function AddQuestion({...props}) {
   const [question, setQuestion] = useState("");
 
   const handleAddQuestion = () => {
-    console.log('function called')
     if (question.trim()) {
       console.log("New Question Added: ", question);
+      console.log("Props: ", props);
+      if (typeof props.onAdd === "function") {
+        props.onAdd(question);
+      }
       setQuestion("");
     }
   };

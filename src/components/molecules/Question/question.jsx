@@ -1,5 +1,5 @@
-function Question() {
-    return <div>Question Component</div>;
+function Question({ ...props }) {
+  return <div>{props.text}</div>;
 }
 
 export default Question;
